@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "StepQuest",
+    "slug": "stepquest",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "scheme": "stepquest",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#0b1020"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "io.shehzeb.stepquest",
+      "infoPlist": {
+        "NSMotionUsageDescription": "StepQuest uses motion data to count your steps and track your daily activity."
+      }
+    },
+    "android": {
+      "package": "io.shehzeb.stepquest",
+      "permissions": ["ACTIVITY_RECOGNITION"]
+    },
+    "plugins": ["expo-sensors"],
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
