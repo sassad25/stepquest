@@ -12,6 +12,7 @@ import { TodayScreen } from './src/screens/TodayScreen';
 import { AdventureScreen } from './src/screens/AdventureScreen';
 import { AchievementsScreen } from './src/screens/AchievementsScreen';
 import { StatsScreen } from './src/screens/StatsScreen';
+import { ErrorBoundary } from './src/components/ErrorBoundary';
 
 const Tab = createBottomTabNavigator();
 
@@ -34,7 +35,7 @@ const TAB_ICON: Record<string, string> = {
   Stats: '📊',
 };
 
-export default function App() {
+function AppInner() {
   const steps = useSteps();
 
   if (steps.loading) {
@@ -82,3 +83,12 @@ const styles = StyleSheet.create({
   loading: { flex: 1, backgroundColor: theme.colors.bg, alignItems: 'center', justifyContent: 'center' },
   loadingText: { color: theme.colors.textSoft, marginTop: theme.spacing(4), fontSize: theme.font.body },
 });
+
+/** Entry point: renders the app inside an error boundary so runtime errors are visible, not fatal. */
+export default function App() {
+  return (
+    <ErrorBoundary>
+      <AppInner />
+    </ErrorBoundary>
+  );
+}

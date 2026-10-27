@@ -96,11 +96,16 @@ export function useSteps(): StepsState {
           baseline.value = current;
           return current;
         });
-        subscriptionRef.current = Pedometer.watchStepCount((res) => {
-          const total = baseline.value + res.steps;
-          setSteps(total);
-          persist(total, g);
-        });
+        try {
+          subscriptionRef.current = Pedometer.watchStepCount((res) => {
+            const total = baseline.value + res.steps;
+            setSteps(total);
+            persist(total, g);
+          });
+        } catch {
+          // Subscribing can throw if motion permission is denied; fail soft.
+          setAvailable(false);
+        }
       }
 
       if (mounted) setLoading(false);

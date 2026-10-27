@@ -22,7 +22,6 @@
       "package": "io.shehzeb.stepquest",
       "permissions": ["ACTIVITY_RECOGNITION"]
     },
-    "plugins": ["expo-sensors"],
     "web": {
       "bundler": "metro"
     }
