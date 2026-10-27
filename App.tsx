@@ -1,3 +1,6 @@
+// react-native-gesture-handler must be imported first, before any other imports,
+// for React Navigation's gesture/animation support to initialize correctly on device.
+import 'react-native-gesture-handler';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
